@@ -1,6 +1,15 @@
 import * as validator from '../src/input-validator';
 import { MAX_PORT, MIN_PORT } from '../src/input-validator';
 
+describe('screen unlock input', () => {
+  it.each(['true', 'false'])('accepts %s', (value) => {
+    expect(() => validator.checkUnlockScreen(value)).not.toThrow();
+  });
+  it.each(['', 'TRUE', 'False', '0', 'yes'])('rejects %s', (value) => {
+    expect(() => validator.checkUnlockScreen(value)).toThrow("Input for input.unlock-screen should be either 'true' or 'false'.");
+  });
+});
+
 describe('arch validator tests', () => {
   it('Throws if arch is unknown', () => {
     const func = () => {

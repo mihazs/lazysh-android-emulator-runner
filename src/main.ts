@@ -3,6 +3,7 @@ import { installAndroidSdk } from './sdk-installer';
 import {
   checkArch,
   checkDisableAnimations,
+  checkUnlockScreen,
   checkEmulatorBuild,
   checkDisableSpellchecker,
   checkDisableLinuxHardwareAcceleration,
@@ -107,6 +108,11 @@ async function run() {
     const emulatorOptions = core.getInput('emulator-options').trim();
     console.log(`emulator options: ${emulatorOptions}`);
 
+    const unlockScreenInput = core.getInput('unlock-screen');
+    checkUnlockScreen(unlockScreenInput);
+    const unlockScreen = unlockScreenInput === 'true';
+    console.log(`unlock screen: ${unlockScreen}`);
+
     // disable animations
     const disableAnimationsInput = core.getInput('disable-animations');
     checkDisableAnimations(disableAnimationsInput);
@@ -210,7 +216,7 @@ async function run() {
     }
 
     // launch an emulator
-    await launchEmulator(avdName, disableAnimations, disableLinuxHardwareAcceleration, disableSpellchecker, emulatorBootTimeout, emulatorOptions, enableHardwareKeyboard, port);
+    await launchEmulator(avdName, disableAnimations, disableLinuxHardwareAcceleration, disableSpellchecker, emulatorBootTimeout, emulatorOptions, enableHardwareKeyboard, port, unlockScreen);
 
     // execute the custom script
     try {

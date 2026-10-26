@@ -45,6 +45,12 @@ export function checkDisableAnimations(disableAnimations: string): void {
   }
 }
 
+export function checkUnlockScreen(unlockScreen: string): void {
+  if (!isValidBoolean(unlockScreen)) {
+    throw new Error(`Input for input.unlock-screen should be either 'true' or 'false'.`);
+  }
+}
+
 export function checkDisableSpellchecker(disableSpellchecker: string): void {
   if (!isValidBoolean(disableSpellchecker)) {
     throw new Error(`Input for input.disable-spellchecker should be either 'true' or 'false'.`);
