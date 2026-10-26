@@ -72,6 +72,7 @@ export async function launchEmulator(
   emulatorOptions: string,
   enableHardwareKeyboard: boolean,
   port: number,
+  unlockScreen = true,
 ): Promise<void> {
   try {
     console.log(`::group::Launch Emulator`);
@@ -97,7 +98,9 @@ export async function launchEmulator(
 
     // wait for emulator to complete booting
     await waitForDevice(port, emulatorBootTimeout);
-    await adb(port, `shell input keyevent 82`);
+    if (unlockScreen) {
+      await adb(port, `shell input keyevent 82`);
+    }
 
     if (disableAnimations) {
       console.log('Disabling animations.');

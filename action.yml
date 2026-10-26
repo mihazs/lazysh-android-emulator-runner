@@ -45,6 +45,9 @@ inputs:
   emulator-options:
     description: 'command-line options used when launching the emulator - e.g. `-no-window -no-snapshot -camera-back emulated`'
     default: '-no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim'
+  unlock-screen:
+    description: 'whether to send a synthetic MENU key after boot to unlock the screen - true or false. Set false when your test framework handles screen readiness and keyguard.'
+    default: 'true'
   disable-animations:
     description: 'whether to disable animations - true or false'
     default: 'true'

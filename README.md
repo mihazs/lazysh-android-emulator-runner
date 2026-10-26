@@ -220,6 +220,7 @@ jobs:
 | `emulator-port` | Optional | `5554` | Emulator port to use. Allows to run this action on multiple workers on a single machine at the same time. This input is available for the script as `EMULATOR_PORT` enviromental variable. This port is automatically used by android device related tasks in gradle |
 | `emulator-options` | Optional | See below | Command-line options used when launching the emulator (replacing all default options) - e.g. `-no-window -no-snapshot -camera-back emulated`. |
 | `disable-animations` | Optional | `true` | Whether to disable animations - `true` or `false`. |
+| `unlock-screen` | Optional | `true` | Whether to send a synthetic MENU key immediately after boot. Set `false` when the test framework handles screen readiness and keyguard; boot waiting, settings and cleanup still run. This does not disable Android's lock screen or dismiss ANRs. |
 | `disable-spellchecker` | Optional | `false` | Whether to disable spellchecker - `true` or `false`. |
 | `disable-linux-hw-accel` | Optional | `auto` | Whether to disable hardware acceleration on Linux machines - `true`, `false` or `auto`.|
 | `enable-hw-keyboard` | Optional | `false` | Whether to enable hardware keyboard - `true` or `false`. |

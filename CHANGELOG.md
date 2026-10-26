@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+* Add `unlock-screen`, defaulting to `true`, to allow test frameworks to opt out of the synthetic post-boot MENU key without changing boot, settings or cleanup behavior.
+
 ## v2.38.0
 
 * Update SDK build tools to `37.0.0`. - [#475](https://github.com/ReactiveCircus/android-emulator-runner/pull/475)
